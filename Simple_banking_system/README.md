@@ -16,7 +16,6 @@ Features
 Technologies Used
 
     Java
-    Scanner for user input
 
 How to Run the Project
 
