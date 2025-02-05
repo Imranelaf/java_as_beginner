@@ -9,25 +9,25 @@ A basic Java console-based banking system that allows users to:
 
 Features
 
-✅ Show Account Balance
-✅ Deposit Amount
-✅ Withdraw Amount
-✅ User-friendly console interface
-Technologies Used
+    ✅ Show Account Balance
+    ✅ Deposit Amount
+    ✅ Withdraw Amount
+    ✅ User-friendly console interface
 
-    Java
+
+Technologies Used : Java
 
 How to Run the Project
 
-    Clone the repository:
+    Clone the repository: git clone https://github.com/Imranelaf/java_as_beginner.git
 
-git clone https://github.com/Imranelaf/java_as_beginner.git
 
 Navigate to the project folder:
 
-cd BankingSystem-Java
+    cd BankingSystem-Java
+
 
 Compile and run the program:
 
-javac Main.java
-java Main
+    javac Main.java
+    java Main
