@@ -33,10 +33,5 @@ For example, you can use the command:
 Upon running the application, you will be prompted to enter a name and password.
 The system will validate the input and store the user in the database.
 
-### Example Output
-<pres>
-Enter the name please: John
-Enter the password please: 1234
-User created successfully</pres>
 Error Handling
 If an error occurs during user creation or database interaction, the error message will be displayed.
