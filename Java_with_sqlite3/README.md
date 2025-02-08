@@ -12,7 +12,7 @@ Features
   Setup Instructions
   Clone this repository or download the project files.
 
-# Install SQLite:
+## Install SQLite:
 
 the sqlite are aleardy provide in this folder "sqlite-jdbc-3.49.0.0.jar" .
 Database Setup:
@@ -20,7 +20,7 @@ Database Setup:
   The SQLite database (users.db) will be automatically created if it doesn't already exist.
   The application will ensure that the users table is created in the database.
 
-# Running the Application:
+## Running the Application:
 
 Compile and run the Java files using a Java IDE or the command line.
 For example, you can use the command:
@@ -28,15 +28,15 @@ For example, you can use the command:
 <pre>javac -cp .:sqlite-jdbc-3.49.0.0.jar Main.java </pre>
 <pre> java -cp .:sqlite-jdbc-3.49.0.0.jar Main </pre>
 
-Create a New User:
+###Create a New User:
 
 Upon running the application, you will be prompted to enter a name and password.
 The system will validate the input and store the user in the database.
 
-## Example Output
-bash
+### Example Output
+<pres>
 Enter the name please: John
 Enter the password please: 1234
-User created successfully
+User created successfully</pres>
 Error Handling
 If an error occurs during user creation or database interaction, the error message will be displayed.
