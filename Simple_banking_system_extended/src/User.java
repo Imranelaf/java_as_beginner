@@ -1,22 +1,25 @@
 import java.util.Scanner;
+import java.util.InputMismatchException;
 
-class Main {
+class User {
     static Scanner scanner = new Scanner(System.in);
 
-    public static void main(String[] args) {
+    public void startUserMenu() {
+		
     
         double balance = 0;
         boolean isRunning = true;
         
         
-	System.out.println("*************************");
-        System.out.println("   Welcome to the Banking System   ");
+		System.out.println("*************************");
+        System.out.println("   Welcome to the Banking Users System   ");
         System.out.println("*************************");
         while (isRunning) {
             displayChoices();
+            try{
             System.out.print("Enter your choice: ");
-            int userChoice = scanner.nextInt();
-
+			int userChoice = scanner.nextInt();	
+          
             switch (userChoice) {
                 case 1:
                     showBalance(balance);
@@ -28,15 +31,24 @@ class Main {
                     balance -= withdrawAmount(balance);
                     break;
                 case 4:
-                    isRunning = exitProgram();
+					System.out.println("Thank you");
+                    isRunning = false;
                     break;
                 default:
                     System.out.println("Invalid choice! Please enter a number between 1 and 4.");
             }
+        }catch(InputMismatchException e){
+			System.out.println("*************************");
+			System.out.println("Please enter a valid number");
+			System.out.println("*************************");
+			scanner.nextLine();
+			
+			}
         }
+        
     }
 
-    static void displayChoices() {
+     void displayChoices() {
         String[] choices = {
             "1 - Show Account Balance",
             "2 - Deposit Amount",
@@ -51,14 +63,15 @@ class Main {
         System.out.println("*************************");
     }
 
-    static void showBalance(double amount) {
+     void showBalance(double amount) {
         System.out.println("*************************");
         System.out.printf("Your current balance: $%.2f%n", amount);
         System.out.println("*************************");
     }
 
-    static double depositAmount() {
+     double depositAmount() {
         System.out.print("Enter the amount to deposit: ");
+        try{
         double amount = scanner.nextDouble();
 
         if (amount <= 0) {
@@ -72,10 +85,18 @@ class Main {
             System.out.println("*************************");
             return amount;
         }
+        }catch(InputMismatchException e){
+			System.out.println("*************************");
+			System.out.println("The deposition must be a number");
+			System.out.println("*************************");
+			scanner.nextLine();
+			return 0;
+			}
     }
 
-    static double withdrawAmount(double balance) {
+     double withdrawAmount(double balance) {
         System.out.print("Enter the amount to withdraw: ");
+        try{
         double amount = scanner.nextDouble();
 
         if (amount > balance) {
@@ -94,11 +115,11 @@ class Main {
             System.out.println("*************************");
             return amount;
         }
+        }catch(InputMismatchException e){
+			System.out.println("Invalid input");
+			scanner.nextLine();
+			return 0;
+			}
     }
 
-    static boolean exitProgram() {
-        System.out.println("Thank you for using our banking system. Goodbye!");
-        scanner.close();
-        return false;
-    }
 }
