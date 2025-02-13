@@ -4,6 +4,10 @@ class Main{
 		
 		boolean isAdmin = true;
 		
+		
+		Sqlite data = new Sqlite();
+		data.start();
+				
 		if(isAdmin){
 			Admin admin = new Admin();
 			admin.startAdminMenu();

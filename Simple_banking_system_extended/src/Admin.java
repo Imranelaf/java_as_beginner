@@ -13,9 +13,13 @@ class Admin{
 		try{
 				System.out.print("Please enter your choice: ");
 				int choice = scanner.nextInt();
+				String message;
 				switch(choice){
 					case 1:
-					System.out.println("Create a new user");
+					message = CreateUser();
+					System.out.println("*************************");
+					System.out.println(message);
+					System.out.println("*************************");
 					break;
 					
 					case 2:
@@ -23,7 +27,10 @@ class Admin{
 					break;
 					
 					case 3: 
-					System.out.println("Delete the user");
+					message = DeleteUser();
+					System.out.println("*************************");
+					System.out.println(message);
+					System.out.println("*************************");
 					break;
 					
 					case 4:
@@ -62,6 +69,27 @@ class Admin{
 		void startUserMenu(){
 			User user = new User();
 			user.startUserMenu();
+			}
+			
+		String CreateUser(){
+			scanner.nextLine();	
+			System.out.print("Enter the name of the user: ");
+			String name = scanner.nextLine();
+			
+			System.out.print("Enter the password of the user: ");
+			String password = scanner.nextLine();
+			Sqlite data = new Sqlite();
+			String result = data.createUser(name, password);
+			return result;
+			}
+			
+		String DeleteUser(){
+			scanner.nextLine();
+			System.out.print("Enter the name of the user that you want delete: ");
+			String name = scanner.nextLine();
+			Sqlite data = new Sqlite();
+			String result = data.deleteUser(name);
+			return result;
 			}
 		
 	
