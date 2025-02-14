@@ -7,7 +7,6 @@ public class Sqlite {
     public static void start() {
 		
 		File dbFile = new File("users.db"); //check if the database exist or not
-		System.out.print(dbFile.exists());
 		if(!dbFile.exists()){
 			createTableIfNotExist();
 			}
@@ -63,6 +62,39 @@ public class Sqlite {
 			System.out.println("Something went wrong, Please try later");
 			return "❌ Error: " + e.getMessage();
 			}
+		
+		}
+
+	public static String login(String name, String password){
+		
+		try (Connection conn = DriverManager.getConnection(url)) {
+			System.out.println(name);
+			String checkUserSQL = "SELECT * FROM users WHERE name=?;";
+			PreparedStatement pstmt = conn.prepareStatement(checkUserSQL);
+			pstmt.setString(1, name);
+			ResultSet result = pstmt.executeQuery();{
+				String username = result.getString("name");
+				String userpass = result.getString("password");
+				
+				//check if the password match
+				if(username!=null){
+					if(userpass.equals(password)){
+						return username;
+						}else{
+							return null;
+							}
+					}else{
+						return null;
+						}
+				}
+			
+			
+			}catch(SQLException e){
+				System.out.println("Something went wrong, Please try later");
+				
+			
+				return e.getMessage();
+				}
 		
 		}
 

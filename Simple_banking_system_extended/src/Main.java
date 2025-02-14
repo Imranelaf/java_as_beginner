@@ -2,13 +2,19 @@ class Main{
 	
 	public static void main(String[] arg){
 		
-		boolean isAdmin = true;
+		String username = null;
 		
-		
+		//starting the database
 		Sqlite data = new Sqlite();
 		data.start();
-				
-		if(isAdmin){
+		
+		//check the user login
+		Login login = new Login();
+		while(username == null){
+		username = login.checking();
+	}
+		
+		if(username.equals("Admin")){
 			Admin admin = new Admin();
 			admin.startAdminMenu();
 			
