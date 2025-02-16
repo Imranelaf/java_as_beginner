@@ -20,6 +20,7 @@ class Main{
 			
 			}else{
 			User user = new User();
+			user.setName(username);
 			user.startUserMenu();
 
 				}

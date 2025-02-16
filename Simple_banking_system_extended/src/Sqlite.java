@@ -17,7 +17,8 @@ public class Sqlite {
             String createTableSQL = "CREATE TABLE IF NOT EXISTS users ("
                     + "id INTEGER PRIMARY KEY AUTOINCREMENT, "
                     + "name TEXT NOT NULL UNIQUE, "
-                    + "password TEXT NOT NULL"
+                    + "password TEXT NOT NULL,"
+					+ "sold INTEGER DEFAULT 0 NOT NULL"
                     + ");";
             Statement stmt = conn.createStatement();
             stmt.execute(createTableSQL);
@@ -65,37 +66,6 @@ public class Sqlite {
 		
 		}
 
-	public static String login(String name, String password){
-		
-		try (Connection conn = DriverManager.getConnection(url)) {
-			System.out.println(name);
-			String checkUserSQL = "SELECT * FROM users WHERE name=?;";
-			PreparedStatement pstmt = conn.prepareStatement(checkUserSQL);
-			pstmt.setString(1, name);
-			ResultSet result = pstmt.executeQuery();{
-				String username = result.getString("name");
-				String userpass = result.getString("password");
-				
-				//check if the password match
-				if(username!=null){
-					if(userpass.equals(password)){
-						return username;
-						}else{
-							return null;
-							}
-					}else{
-						return null;
-						}
-				}
-			
-			
-			}catch(SQLException e){
-				System.out.println("Something went wrong, Please try later");
-				
-			
-				return e.getMessage();
-				}
-		
-		}
+	
 
 }

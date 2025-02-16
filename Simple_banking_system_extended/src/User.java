@@ -3,11 +3,18 @@ import java.util.InputMismatchException;
 
 class User {
     static Scanner scanner = new Scanner(System.in);
+    HandleUser handleUser = new HandleUser();
+    private String name;
+    
+    public void setName(String name) {
+    this.name = name;
+  }
+
 
     public void startUserMenu() {
 		
     
-        double balance = 0;
+        double balance = handleUser.showAmount(name);
         boolean isRunning = true;
         
         
@@ -22,13 +29,13 @@ class User {
           
             switch (userChoice) {
                 case 1:
-                    showBalance(balance);
+                    balance = showBalance();
                     break;
                 case 2:
-                    balance += depositAmount();
+                    depositAmount();
                     break;
                 case 3:
-                    balance -= withdrawAmount(balance);
+                   withdrawAmount(balance);
                     break;
                 case 4:
 					System.out.println("Thank you");
@@ -63,13 +70,15 @@ class User {
         System.out.println("*************************");
     }
 
-     void showBalance(double amount) {
+     double showBalance() {
+		double amount = handleUser.showAmount(name);
         System.out.println("*************************");
         System.out.printf("Your current balance: $%.2f%n", amount);
         System.out.println("*************************");
+        return amount;
     }
 
-     double depositAmount() {
+     void depositAmount() {
         System.out.print("Enter the amount to deposit: ");
         try{
         double amount = scanner.nextDouble();
@@ -78,23 +87,22 @@ class User {
             System.out.println("*************************");
             System.out.println("Deposit amount must be positive.");
             System.out.println("*************************");
-            return 0;
         } else {
             System.out.println("*************************");
             System.out.println("Successfully deposited $" + amount);
             System.out.println("*************************");
-            return amount;
+            handleUser.balance(amount, name, 'd');
+            //return amount;
         }
         }catch(InputMismatchException e){
 			System.out.println("*************************");
 			System.out.println("The deposition must be a number");
 			System.out.println("*************************");
 			scanner.nextLine();
-			return 0;
 			}
     }
 
-     double withdrawAmount(double balance) {
+     void withdrawAmount(double balance) {
         System.out.print("Enter the amount to withdraw: ");
         try{
         double amount = scanner.nextDouble();
@@ -103,22 +111,19 @@ class User {
             System.out.println("*************************");
             System.out.println("Insufficient balance! You cannot withdraw more than your available balance.");
             System.out.println("*************************");
-            return 0;
         } else if (amount <= 0) {
             System.out.println("*************************");
             System.out.println("Withdrawal amount must be positive.");
             System.out.println("*************************");
-            return 0;
         } else {
             System.out.println("*************************");
             System.out.println("Successfully withdrew $" + amount);
             System.out.println("*************************");
-            return amount;
+            handleUser.balance(amount, name, 'w');
         }
         }catch(InputMismatchException e){
 			System.out.println("Invalid input");
 			scanner.nextLine();
-			return 0;
 			}
     }
 

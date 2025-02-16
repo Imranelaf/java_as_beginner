@@ -10,8 +10,8 @@ class Login{
 		System.out.print("Enter your password: ");
 		String password = scanner.nextLine();
 		
-		Sqlite data = new Sqlite();
-		String result = data.login(name, password);
+		HandleUser user = new HandleUser();
+		String result = user.login(name, password);
 		
 		if(result == null){
 			System.out.println("Username Or/and Password incorrect");
