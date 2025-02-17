@@ -13,7 +13,7 @@ class User {
 
     public void startUserMenu() {
 		
-    
+		System.out.println("THIS IS THE USER NAME "+name);
         double balance = handleUser.showAmount(name);
         boolean isRunning = true;
         

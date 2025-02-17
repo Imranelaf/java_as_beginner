@@ -3,6 +3,7 @@ import java.util.InputMismatchException;
 
 class Admin{
 	public Scanner scanner = new Scanner(System.in);
+	String theUser = null;
 	
 	public void startAdminMenu(){
 		boolean runing = true;
@@ -67,10 +68,23 @@ class Admin{
 			}
 			
 		void startUserMenu(){
-			User user = new User();
-			user.startUserMenu();
+			scanner.nextLine();
+			System.out.println("*************************");
+			System.out.print("Enter the user name: ");
+			String name = scanner.nextLine();
+			AdminRole admin = new AdminRole();
+			theUser = admin.login(name);
+			if(theUser == null){
+				System.out.println("There is no user under this name");
+				}else{
+				User user = new User();
+				System.out.println("THE RESULT FROM THE ADMIN: "+theUser);
+				user.setName(theUser);
+				user.startUserMenu();
 			}
 			
+		
+		}
 		String CreateUser(){
 			scanner.nextLine();	
 			System.out.print("Enter the name of the user: ");
@@ -89,6 +103,7 @@ class Admin{
 			String name = scanner.nextLine();
 			Sqlite data = new Sqlite();
 			String result = data.deleteUser(name);
+			System.out.println(result);
 			return result;
 			}
 		

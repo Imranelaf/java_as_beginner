@@ -1,11 +1,9 @@
 import java.sql.*;
 
-class HandleUser {
-	
-	static String url = "jdbc:sqlite:users.db";
+class HandleUser extends Sqlite {
 
 	// Authenticates the user by verifying the provided username and password against the database records.
-	static String login(String username, String password) { 
+	String login(String username, String password) { 
 		try (Connection conn = DriverManager.getConnection(url)) {
 			String getUserSQL = "SELECT * FROM users WHERE name=?;";
 			PreparedStatement pstmt = conn.prepareStatement(getUserSQL);
