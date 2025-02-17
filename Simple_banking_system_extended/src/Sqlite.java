@@ -18,7 +18,7 @@ public class Sqlite {
                     + "id INTEGER PRIMARY KEY AUTOINCREMENT, "
                     + "name TEXT NOT NULL UNIQUE, "
                     + "password TEXT NOT NULL,"
-					+ "sold INTEGER DEFAULT 0 NOT NULL"
+					+ "sold DOUBLE DEFAULT 0 NOT NULL"
                     + ");";
             Statement stmt = conn.createStatement();
             stmt.execute(createTableSQL);
@@ -63,9 +63,5 @@ public class Sqlite {
 			System.out.println("Something went wrong, Please try later");
 			return "❌ Error: " + e.getMessage();
 			}
-		
 		}
-
-	
-
 }

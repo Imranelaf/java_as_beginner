@@ -68,7 +68,7 @@ class HandleUser extends Sqlite {
 		}
 	}
 
-	//this method run when the user enter to the seasson
+	//this method run when the user enter to the session
 	//return the amount in the database
 	static double showAmount(String username){
 		double currentBalance = Double.NaN;
@@ -87,6 +87,4 @@ class HandleUser extends Sqlite {
 				}
 			return currentBalance;
 		}
-		
-
 }

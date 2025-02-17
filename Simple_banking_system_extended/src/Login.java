@@ -1,6 +1,5 @@
 import java.util.Scanner;
 
-
 class Login{
 	public Scanner scanner = new Scanner(System.in);
 	public String checking(){
@@ -9,7 +8,7 @@ class Login{
 		String name = scanner.nextLine();
 		System.out.print("Enter your password: ");
 		String password = scanner.nextLine();
-		
+	
 		HandleUser user = new HandleUser();
 		String result = user.login(name, password);
 		
@@ -22,7 +21,5 @@ class Login{
 				
 				}
 		}
-		
-	
-	
+
 }

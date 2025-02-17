@@ -6,10 +6,9 @@ class Admin{
 	String theUser = null;
 	
 	public void startAdminMenu(){
-		boolean runing = true;
-		
-		
-		while(runing){
+		boolean running = true;
+	
+		while(running){
 		adminChoices();
 		try{
 				System.out.print("Please enter your choice: ");
@@ -35,7 +34,7 @@ class Admin{
 					break;
 					
 					case 4:
-					runing = false; 
+					running = false; 
 					break;
 					
 					default:
@@ -49,11 +48,8 @@ class Admin{
 					System.out.println("*************************");
 					scanner.nextLine();
 					}
-	}
-		
+	}	
 		}
-	
-	
 		void adminChoices(){
 			
 			System.out.println("*************************");
@@ -82,14 +78,12 @@ class Admin{
 				user.setName(theUser);
 				user.startUserMenu();
 			}
-			
-		
+
 		}
 		String CreateUser(){
 			scanner.nextLine();	
 			System.out.print("Enter the name of the user: ");
 			String name = scanner.nextLine();
-			
 			System.out.print("Enter the password of the user: ");
 			String password = scanner.nextLine();
 			Sqlite data = new Sqlite();
@@ -106,6 +100,5 @@ class Admin{
 			System.out.println(result);
 			return result;
 			}
-		
-	
+
 	}

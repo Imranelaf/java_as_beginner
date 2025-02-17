@@ -5,19 +5,17 @@ class User {
     static Scanner scanner = new Scanner(System.in);
     HandleUser handleUser = new HandleUser();
     private String name;
-    
+  
     public void setName(String name) {
     this.name = name;
   }
-
 
     public void startUserMenu() {
 		
 		System.out.println("THIS IS THE USER NAME "+name);
         double balance = handleUser.showAmount(name);
         boolean isRunning = true;
-        
-        
+
 		System.out.println("*************************");
         System.out.println("   Welcome to the Banking Users System   ");
         System.out.println("*************************");
@@ -62,7 +60,6 @@ class User {
             "3 - Withdraw Amount",
             "4 - Exit"
         };
-
 
         for (String choice : choices) {
             System.out.println(choice);
@@ -128,3 +125,4 @@ class User {
     }
 
 }
+
